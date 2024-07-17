@@ -6,6 +6,7 @@ import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../context/cart";
 import { Badge } from "antd";
+import logo from '../../Images/logo.webp'
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -41,7 +42,7 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link className="navbar-brand my-0">
               {}
-              <img src="/images/logo2.webp" height={"50px"} alt="" /> Shark
+              <img src={logo} height={"50px"} alt="" /> Shark
               Electronics
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">

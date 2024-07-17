@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import { useAuth } from "../context/auth";
 import { AiOutlineReload } from "react-icons/ai";
 import formatPrice from "../components/formatPrice";
+import banner from '../Images/banner.jpg'
 import "../styles/Home.css";
 
 const Home = () => {
@@ -131,7 +132,7 @@ const Home = () => {
     <Layout title={"Shark Electronics - Home"}>
       {/* banner image */}
       <img
-        src="/images/banner3.jpg"
+        src={banner}
         className="banner-img"
         alt="bannerimage"
         width={"100%"}
