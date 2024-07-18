@@ -22,7 +22,14 @@ const Layout = ({
       </Helmet>
       <Header />
       <main style={{ minHeight: "73.3vh" }}>
-        <Toaster /> {children}
+        <Toaster />
+        {(() => {
+          try {
+            return children;
+          } catch (error) {
+            console.log("Error rendering children", error);
+          }
+        })()}
       </main>
       <Footer />
     </>

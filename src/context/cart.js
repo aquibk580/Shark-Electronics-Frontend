@@ -30,8 +30,7 @@ const CartProvider = ({ children }) => {
             items: updatedCart,
             updatedAt: new Date().toISOString(),
           });
-          if(data?.success)
-          toast.success(data?.message);
+          if (data?.success) toast.success(data?.message);
         } else {
           toast.success(data?.message);
         }
@@ -66,7 +65,7 @@ const CartProvider = ({ children }) => {
         toast.error(error);
       }
     };
-    fetchCart();
+    if (auth?.token) fetchCart();
   }, [auth?.user?._id]);
 
   return (
