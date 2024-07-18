@@ -52,7 +52,7 @@ const Users = () => {
                     </div>
                     <div className="card-text">
                       <b>Address : </b>
-                      {u.address}
+                      {u.address.toString()}
                     </div>
                     <div className="card-text">
                       <b>Answer : </b>
