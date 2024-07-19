@@ -30,17 +30,17 @@ const Orders = () => {
 
   return (
     <Layout title="Dashboard - Your Orders">
-      <div className="container-fluid p-3">
+      <div className="container-fluid p-3 user-order">
         <div className="row">
           <div className="col-md-3">
             <UserMenu />
           </div>
-          <div className="col-md-9">
-            <h1>All Orders</h1>
+          <div className="col-md-9 d-flex flex-column align orders">
+            <h2>All Orders</h2>
             {orders.map((o, i) => {
               return (
                 <div className="border shadow" key={i}>
-                  <table className="table">
+                  <table className="table" id="table">
                     <thead>
                       <tr>
                         <th scope="col">#</th>

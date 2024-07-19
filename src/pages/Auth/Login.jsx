@@ -55,7 +55,6 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
-              id="exampleInputEmail1"
               placeholder="Enter Your Email "
               required
             />
@@ -66,7 +65,6 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="form-control"
-              id="exampleInputPassword1"
               placeholder="Enter Your Password"
               required
             />

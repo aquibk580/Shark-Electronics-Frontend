@@ -1,0 +1,24 @@
+.dashboard .admin-menu {
+  padding: 25px;
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard .card {
+    width: 300px !important;
+  }
+  .user-dashboard .card {
+    width: 300px !important;
+    margin: 40px 15px;
+  }
+  .user-profile .form-container {
+    margin: 40px 0px;
+  }
+  .user-order .orders {
+    align-items: center;
+    margin: 40px 0;
+    padding: 0 70px;
+  }
+  .table{
+     font-size: 14px;
+  }
+}

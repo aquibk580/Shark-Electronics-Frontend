@@ -6,7 +6,7 @@ import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../context/cart";
 import { Badge } from "antd";
-import logo from '../../Images/logo.webp'
+import logo from "../../Images/logo.webp";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -29,7 +29,7 @@ const Header = () => {
       >
         <div className="container-fluid">
           <button
-            className="navbar-toggler"
+            className="navbar-toggler mx-2"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarTogglerDemo01"
@@ -40,15 +40,20 @@ const Header = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <Link className="navbar-brand my-0">
-              {}
-              <img src={logo} height={"50px"} alt="" /> Shark
-              Electronics
+            <Link className="navbar-brand">
+              <div className="d-flex">
+                <img src={logo} height={"50px"} alt="" />
+                <pre>Shark Electronics</pre>
+              </div>
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <SearchInput />
               <li className="nav-item  mx-2">
-                <NavLink to="/" className="nav-link" aria-current="page">
+                <NavLink
+                  to="/"
+                  className="nav-link nav-link-home"
+                  aria-current="page"
+                >
                   Home
                 </NavLink>
               </li>
@@ -136,7 +141,7 @@ const Header = () => {
                   </li>
                 </>
               )}
-              <li className="nav-item">
+              <li className="nav-item cart-text">
                 <Badge count={cart?.items?.length}>
                   <NavLink to="/cart" className="nav-link" aria-current="page">
                     Cart

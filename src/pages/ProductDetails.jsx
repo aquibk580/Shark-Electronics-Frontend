@@ -45,22 +45,26 @@ const ProductDetails = () => {
   return (
     <Layout title="Product - More Details">
       <div className="row container product-details">
-        <div className="col-md-6 d-flex justify-content-center">
+        <div className="col-md-6 product-image">
           <img
             src={`${process.env.REACT_APP_API}/api/v1/product/get-photo/${product._id}`}
             className=""
             alt={product.name}
-            height="300px"
-            width={"300px"}
+            height="400px"
+            width={"400px"}
           />
         </div>
-        <div className="col-md-6 product-details-info">
+        <div className="col-md-6 product-details-info card">
           <h1 className="text-center">Product Details</h1>
           <hr />
-          <h6>{product.name}</h6>
-          <h6>{product.description}</h6>
-          <h6>₹{product?.price}</h6>
-          <h6>Category : {product?.category?.name}</h6>
+          <h5>{product.name}</h5>
+          <hr />
+          <h5>{product.description}</h5>
+          <hr />
+          <h5>₹{product?.price}</h5>
+          <hr />
+          <h5>Category : {product?.category?.name}</h5>
+          <hr />
           <button
             class={`btn btn-secondary ms-1 ${!auth?.user && "d-none"}`}
             onClick={() => handleCart(auth?.user?._id, product._id)}
@@ -75,12 +79,13 @@ const ProductDetails = () => {
         {relatedProducts.length < 1 && (
           <p className="text-center">No Similar Products found</p>
         )}
-        <div className="d-flex flex-wrap">
+        <div className="d-flex flex-wrap similar-products-container">
           {relatedProducts?.map((p) => (
             <div className="card m-2" key={p._id}>
               <img
                 src={`${process.env.REACT_APP_API}/api/v1/product/get-photo/${p._id}`}
                 className="card-img-top"
+                onClick={() => navigate(`/product/${p.slug}`)}
                 alt={p.name}
               />
               <div className="card-body">

@@ -57,7 +57,7 @@ const Profile = () => {
 
   return (
     <Layout title="Dashboard - Your Profile">
-      <div className="container-fluid p-3">
+      <div className="container-fluid p-3 user-profile">
         <div className="row">
           <div className="col-md-3">
             <UserMenu />

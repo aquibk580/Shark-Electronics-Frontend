@@ -36,3 +36,7 @@
   .category .card-img-top {
     height: 300px !important;
   }
+
+  .category-btn{
+    width: 300px;
+  }

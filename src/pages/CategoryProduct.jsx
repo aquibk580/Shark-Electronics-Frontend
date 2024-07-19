@@ -33,7 +33,7 @@ const CategoryProduct = () => {
   }, [params?.slug]);
   return (
     <Layout title={capitalizeFirstLetter(params.slug) + " - Category"}>
-      <div className="container mt-3 category">
+      <div className="container mt-1 category">
         <h4 className="text-center">Categorys - {category?.name}</h4>
         <h6 className="text-center">{products?.length} Result Found</h6>
         <div className="row">
@@ -41,7 +41,7 @@ const CategoryProduct = () => {
             <div className="d-flex flex-wrap justify-content-center">
               {products?.map((p) => (
                 <div
-                  className="card m-2"
+                  className="card m-2 my-4"
                   style={{ width: "18rem" }}
                   key={p._id}
                 >

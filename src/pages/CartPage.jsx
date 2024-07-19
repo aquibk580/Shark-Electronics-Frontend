@@ -18,7 +18,7 @@ const CartPage = () => {
   const [instance, setInstance] = useState("");
   const [loading, setLoading] = useState(false);
 
-  //Total Price
+  // Total Price
   useEffect(() => {
     const calculateTotalPrice = () => {
       try {
@@ -36,7 +36,9 @@ const CartPage = () => {
         console.error(error);
       }
     };
-    calculateTotalPrice();
+    if (cart && cart.items) {
+      calculateTotalPrice();
+    }
   }, [cart]);
 
   // Remove Item
@@ -89,12 +91,14 @@ const CartPage = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
-    getToken();
+    if (auth?.token) {
+      getToken();
+    }
   }, [auth?.token]);
 
-  //handle payments
-
+  // Handle payments
   const handlePayment = async () => {
     try {
       setLoading(true);
@@ -153,7 +157,7 @@ const CartPage = () => {
   return (
     <Layout title="Cart - Ecommerce App">
       {auth?.token ? (
-        <div className="container">
+        <div className="container cart-container">
           <div className="row">
             <div className="col-md-12">
               <h1 className="text-center bg-light p-2 mb-1">
@@ -171,7 +175,10 @@ const CartPage = () => {
           <div className="row my-4">
             <div className="col-md-7">
               {cart?.items?.map((p) => (
-                <div className="row mb-3 card flex-row p-3" key={p.productId._id}>
+                <div
+                  className="row mb-3 card flex-row cart-item"
+                  key={p.productId._id}
+                >
                   <div className="col-md-4">
                     <img
                       src={`${process.env.REACT_APP_API}/api/v1/product/get-photo/${p.productId._id}`}
@@ -186,14 +193,14 @@ const CartPage = () => {
                     <p>Price: ₹{formatPrice(p.productId.price)}</p>
                     <div className="d-flex flex-row">
                       <button
-                        className="btn btn-danger"
+                        className="btn btn-danger removeBtn"
                         onClick={() =>
                           removeCartItem(auth?.user?._id, p.productId._id)
                         }
                       >
                         Remove
                       </button>
-                      <div className="mx-5">
+                      <div className="quantityBtn">
                         <button
                           className="btn btn-primary mx-2 w-10 px-3"
                           onClick={() =>
@@ -204,11 +211,11 @@ const CartPage = () => {
                             )
                           }
                         >
-                          -
+                          <b>-</b>
                         </button>
                         <span>QTY {p.quantity}</span>
                         <button
-                          className="btn btn-primary mx-2 w-10"
+                          className="btn btn-primary mx-2 w-10 "
                           onClick={() =>
                             handleQtyChange(
                               auth?.user?._id,
@@ -217,7 +224,7 @@ const CartPage = () => {
                             )
                           }
                         >
-                          +
+                          <b>+</b>
                         </button>
                       </div>
                     </div>
@@ -225,14 +232,13 @@ const CartPage = () => {
                 </div>
               ))}
             </div>
-            <div className="col-md-5 cart-summary px-5">
+            <div className={`col-md-5 cart-summary px-5`}>
               <h2>Cart Summary</h2>
               <p>Total | Checkout | Payment</p>
-              <hr />
               <h4>Total: {totalPrice}</h4>
               {auth?.user?.address ? (
                 <>
-                  <div className="mb-3">
+                  <div className="current-address mb-3">
                     <h4>Current Address</h4>
                     <h5>{auth?.user?.address}</h5>
                     <button
@@ -243,7 +249,7 @@ const CartPage = () => {
                     </button>
                   </div>
                   <div className="mt-2">
-                    {!clientToken || !cart?.items.length ? (
+                    {!clientToken || !cart?.items?.length ? (
                       ""
                     ) : (
                       <>

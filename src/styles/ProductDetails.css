@@ -1,50 +1,85 @@
 .product-details {
-    margin-top: 50px !important;
+  margin-top: 50px !important;
+}
+.product-image{
+  padding: 0 50px;
+} 
+
+
+.product-details-info {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  padding: 15px 20px;
+}
+
+.product-details-info h6 {
+  margin-bottom: 20px !important;
+}
+
+
+.similar-products .card {
+  background-color: rgba(128, 128, 128, 0.097);
+  width: 18rem;
+}
+
+.similar-products .card-name-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.similar-products .card-price {
+  color: green;
+  font-weight: bold;
+}
+.similar-products button {
+  border-radius: 0;
+  width: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.similar-products .card-text {
+  color: rgb(90, 89, 89);
+}
+
+.similar-products .card img:hover {
+  transform: scale(0.9);
+}
+
+.similar-products .card-img-top {
+  height: 300px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .product-details-info{
+    width: fit-content;
+    margin: 0 20px;
+    padding: 15px 10px;
   }
-  
-  .product-details-info {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
+  .product-details{
+   margin: 20px 0;
+   padding: 0;
+  }
+  .product-image{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .product-image img{
+    width: 350px;
+    height: 350px;
+  }
+  .similar-products-container{
+    align-items: center;
     justify-content: center;
+    margin: 10px 1px
   }
-  
-  .product-details-info h6 {
-    margin-bottom: 20px !important;
+  .similar-products{
+    margin: 0;
   }
-  
-  .similar-products .card {
-    background-color: rgba(128, 128, 128, 0.097);
-    width: 18rem;
-  }
-  
-  .similar-products .card-name-price {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  
-  .similar-products .card-price {
-    color: green;
-    font-weight: bold;
-  }
-  .similar-products button {
-    border-radius: 0;
-    width: 100%;
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  .similar-products .card-text {
-    color: rgb(90, 89, 89);
-  }
-  
-  .similar-products .card img:hover {
-    transform: scale(0.9);
-  }
-  
-  .similar-products .card-img-top {
-    height: 300px !important;
-  }
+}

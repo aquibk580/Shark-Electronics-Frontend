@@ -19,10 +19,11 @@ const SearchInput = () => {
     }
   };
   return (
-    <form className="d-flex mx-2" role="search" onSubmit={handleSubmit}>
+    <form className="d-flex mx-2 mb-1" role="search" onSubmit={handleSubmit}>
       <input
         className="form-control me-2"
         type="search"
+        id="search-bar"
         placeholder="Search"
         aria-label="Search"
         value={values.keyword}

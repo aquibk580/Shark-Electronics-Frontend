@@ -48,7 +48,6 @@ const Signup = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="form-control"
-              id="exampleInputEmail1"
               placeholder="Enter Your Name"
               required
               autoFocus
@@ -60,7 +59,6 @@ const Signup = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
-              id="exampleInputEmail1"
               placeholder="Enter Your Email "
               required
             />
@@ -82,7 +80,6 @@ const Signup = () => {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="form-control"
-              id="exampleInputEmail1"
               placeholder="Enter Your Phone"
               required
             />
@@ -93,7 +90,6 @@ const Signup = () => {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               className="form-control"
-              id="exampleInputEmail1"
               placeholder="Enter Your Address"
               required
             />
@@ -104,7 +100,6 @@ const Signup = () => {
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
-              id="exampleInputEmail1"
               placeholder="What is Your Favorite sports"
               required
             />

@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import { useAuth } from "../context/auth";
 import { AiOutlineReload } from "react-icons/ai";
 import formatPrice from "../components/formatPrice";
-import banner from '../Images/banner.jpg'
+import banner from "../Images/banner.jpg";
 import "../styles/Home.css";
 
 const Home = () => {
@@ -131,18 +131,13 @@ const Home = () => {
   return (
     <Layout title={"Shark Electronics - Home"}>
       {/* banner image */}
-      <img
-        src={banner}
-        className="banner-img"
-        alt="bannerimage"
-        width={"100%"}
-        height={"400px"}
-      />
+      <img src={banner} className="banner-img" alt="bannerimage" />
       {/* banner image */}
       <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
-          <h4 className="text-center">Filter By Category</h4>
-          <div className="d-flex flex-column">
+          <h4 className="text-center">Filters By Category</h4>
+          <hr />
+          <div className="d-flex flex-column mx-2">
             {categories?.map((c, i) => (
               <Checkbox
                 key={c._id}
@@ -154,7 +149,8 @@ const Home = () => {
             ))}
           </div>
           {/* price filter */}
-          <h4 className="text-center mt-4">Filter By Price</h4>
+          <h4 className="text-center mt-4">Filters By Price</h4>
+          <hr />
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
               {Prices?.map((p) => (
@@ -164,23 +160,22 @@ const Home = () => {
               ))}
             </Radio.Group>
           </div>
-          <div className="d-flex flex-column">
-            <button
-              className="btn btn-danger mb-2"
-              onClick={() => window.location.reload()}
-            >
-              RESET FILTERS
-            </button>
-          </div>
+          <button
+            className="btn btn-danger mb-2"
+            onClick={() => window.location.reload()}
+          >
+            RESET FILTERS
+          </button>
         </div>
-        <div className="col-md-9" style={{ paddingLeft: "70px" }}>
+        <div className="col-md-9 allProducts">
           <h1 className="text-center">All Products</h1>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <div className="card m-3" key={p._id}>
                 <img
                   src={`${process.env.REACT_APP_API}/api/v1/product/get-photo/${p._id}`}
-                  className="card-img-top" style={{cursor:"pointer"}}
+                  className="card-img-top"
+                  style={{ cursor: "pointer" }}
                   width={"100%"}
                   onClick={() => navigate(`/product/${p.slug}`)}
                   alt={p.name}
