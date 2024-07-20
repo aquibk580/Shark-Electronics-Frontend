@@ -54,17 +54,17 @@ const AdminOrders = () => {
   };
   return (
     <Layout title="All Orders Data">
-      <div className="continer-fluid p-3">
+      <div className="continer-fluid p-3 admin-order">
         <div className="row">
           <div className="col-md-3 p-4">
             <AdminMenu />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-9 orders">
             <h1 className="text-center">All Orders</h1>
             {orders.map((o, i) => {
               return (
                 <div className="border shadow" key={i}>
-                  <table className="table">
+                  <table className="admin-table">
                     <thead>
                       <tr>
                         <th scope="col">#</th>

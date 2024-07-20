@@ -91,7 +91,7 @@ const CreateCategory = () => {
   };
   return (
     <Layout title={"Dashboard - Create Category"}>
-      <div className="container-fluid p-3">
+      <div className="container-fluid p-3 create-category">
         <div className="row">
           <div className="col-md-3 p-4">
             <AdminMenu />
@@ -100,8 +100,8 @@ const CreateCategory = () => {
             className="col-md-9 p-5"
             style={{ maxWidth: "fitContent" }}
           >
-            <h1>Manage Category</h1>
-            <div className="p-3 w-50">
+            <h1 className="mx-2">Manage Category</h1>
+            <div className="px-2 py-3">
               <CategoryForm
                 handleSubmit={handleSubmit}
                 value={name}
@@ -118,9 +118,9 @@ const CreateCategory = () => {
                 </thead>
                 <tbody>
                   {categories?.map((c) => (
-                    <tr key={c._id}>
+                    <tr key={c._id} className="">
                       <td>{c.name}</td>
-                      <td>
+                      <td className="d-flex py-3">
                         <button
                           className="btn btn-primary ms-2"
                           onClick={() => {

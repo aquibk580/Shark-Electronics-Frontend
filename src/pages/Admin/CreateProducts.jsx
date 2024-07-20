@@ -72,7 +72,7 @@ const CreateProduct = () => {
           <div className="col-md-3 p-4">
             <AdminMenu />
           </div>
-          <div className="col-md-9">
+          <div className={`col-md-9 d-flex flex-column p-0 ${window.innerWidth >= 768 ? "px-5" : "align-items-center"}`}>
             <h1>Create Product</h1>
             <div className="m-1 w-75">
               <Select

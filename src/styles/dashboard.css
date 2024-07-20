@@ -18,7 +18,15 @@
     margin: 40px 0;
     padding: 0 70px;
   }
+  .admin-order{
+    align-items: center;
+    margin: 40px 0;
+    padding: 0 70px;
+  }
   .table{
      font-size: 14px;
+  }
+  .admin-table{
+    font-size: 13px;
   }
 }

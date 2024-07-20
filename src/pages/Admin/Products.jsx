@@ -31,7 +31,7 @@ const Products = () => {
           <div className="col-md-3 p-4">
             <AdminMenu />
           </div>
-          <div className="col-md-9" style={{ maxWidth: "fit-content", paddingLeft:"60px"}}>
+          <div className={`col-md-9 ${window.innerWidth >= 768 ? "px-5" : "px-3 mx-2"}`}>
             <h1 className="text-center">All Products List</h1>
             <div className="d-flex flex-wrap">
               {products?.map((p) => (
