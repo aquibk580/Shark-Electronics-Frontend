@@ -17,6 +17,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 17px;
   line-height: 26px;
+  position: sticky !important;
   text-transform: uppercase;
   box-shadow: 0 6px 8px -6px gray;
   --webkit-box-shadow: 0 6px 8px -6px gray;
