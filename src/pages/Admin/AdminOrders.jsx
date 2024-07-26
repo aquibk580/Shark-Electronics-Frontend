@@ -25,7 +25,7 @@ const AdminOrders = () => {
   const getOrders = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/order/all-orders`
+        `/api/v1/order/all-orders`
       );
       setOrders(data);
     } catch (error) {
@@ -43,7 +43,7 @@ const AdminOrders = () => {
   const handleChange = async (orderId, status) => {
     try {
       const { data } = await axios.put(
-        `${process.env.REACT_APP_API}/api/v1/order/order-status/${orderId}`,
+        `/api/v1/order/order-status/${orderId}`,
         { status }
       );
       getOrders();
@@ -105,7 +105,7 @@ const AdminOrders = () => {
                       <div className="row mb-3 card flex-row" key={o._id}>
                         <div className="col-md-4">
                           <img
-                            src={`${process.env.REACT_APP_API}/api/v1/product/get-photo/${p._id}`}
+                            src={`/api/v1/product/get-photo/${p._id}`}
                             className="card-img-top"
                             alt={p.name}
                             height="200px"

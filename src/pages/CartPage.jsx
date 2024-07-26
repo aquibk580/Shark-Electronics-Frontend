@@ -45,7 +45,7 @@ const CartPage = () => {
   const removeCartItem = async (userId, productId) => {
     try {
       const { data } = await axios.delete(
-        `${process.env.REACT_APP_API}/api/v1/cart/delete-cartitem/${userId}/${productId}`
+        `/api/v1/cart/delete-cartitem/${userId}/${productId}`
       );
       if (data?.success) {
         const updatedCartItems = cart.items.filter(
@@ -71,7 +71,7 @@ const CartPage = () => {
   const removeAllCartItems = async () => {
     try {
       const { data } = await axios.delete(
-        `${process.env.REACT_APP_API}/api/v1/cart/remove-allitems/${auth?.user._id}`
+        `/api/v1/cart/remove-allitems/${auth?.user._id}`
       );
       if (data?.success) {
         setCart({ ...cart, items: [] });
@@ -84,7 +84,7 @@ const CartPage = () => {
   const getToken = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/product/braintree/token`
+        `/api/v1/product/braintree/token`
       );
       setClientToken(data?.clientToken);
     } catch (error) {
@@ -104,7 +104,7 @@ const CartPage = () => {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
       const { data } = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/product/braintree/payment`,
+        `/api/v1/product/braintree/payment`,
         {
           nonce,
           cart,
@@ -125,8 +125,8 @@ const CartPage = () => {
     try {
       const url =
         action === "increase"
-          ? `${process.env.REACT_APP_API}/api/v1/cart/increase-quantity`
-          : `${process.env.REACT_APP_API}/api/v1/cart/decrease-quantity`;
+          ? `/api/v1/cart/increase-quantity`
+          : `/api/v1/cart/decrease-quantity`;
       const response = await axios.post(url, { userId, productId });
       const { data, status } = response;
 
@@ -181,7 +181,7 @@ const CartPage = () => {
                 >
                   <div className="col-md-4">
                     <img
-                      src={`${process.env.REACT_APP_API}/api/v1/product/get-photo/${p.productId._id}`}
+                      src={`/api/v1/product/get-photo/${p.productId._id}`}
                       className="card-img-top"
                       alt={p.productId.name}
                       height="200px"

@@ -11,7 +11,7 @@ const CartProvider = ({ children }) => {
   const handleCart = async (userId, productId) => {
     try {
       const { data } = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/cart/add-cartitem`,
+        `/api/v1/cart/add-cartitem`,
         { userId, productId }
       );
 
@@ -53,7 +53,7 @@ const CartProvider = ({ children }) => {
     const fetchCart = async () => {
       try {
         const { data } = await axios.get(
-          `${process.env.REACT_APP_API}/api/v1/cart/get-cart/${auth?.user?._id}`
+          `/api/v1/cart/get-cart/${auth?.user?._id}`
         );
         if (data?.success) {
           setCart(data?.cart);

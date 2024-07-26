@@ -12,7 +12,7 @@ const Products = () => {
   const getAllProducts = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/product/get-product`
+        `/api/v1/product/get-product`
       );
       setProducts(data.products);
     } catch (error) {
@@ -37,7 +37,7 @@ const Products = () => {
               {products?.map((p) => (
                 <div className="card m-2" key={p._id} style={{ width: "18rem" }}>
                   <img
-                    src={`${process.env.REACT_APP_API}/api/v1/product/get-photo/${p._id}`}
+                    src={`/api/v1/product/get-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

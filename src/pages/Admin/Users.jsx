@@ -9,7 +9,7 @@ const Users = () => {
   const getAllUsers = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/auth/admin-getallusers`
+        `/api/v1/auth/admin-getallusers`
       );
       if (data?.success) {
         setUsers(data?.users);

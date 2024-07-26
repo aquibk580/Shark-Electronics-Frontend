@@ -30,7 +30,7 @@ const Search = () => {
                   key={p._id}
                 >
                   <img
-                    src={`${process.env.REACT_APP_API}/api/v1/product/get-photo/${p._id}`}
+                    src={`/api/v1/product/get-photo/${p._id}`}
                     className="card-img-top"
                     alt={p.name}
                   />

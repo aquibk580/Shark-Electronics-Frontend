@@ -6,7 +6,7 @@ import SearchInput from "../Form/SearchInput";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../context/cart";
 import { Badge } from "antd";
-import logo from "../../Images/logo.webp";
+// import logo from "../../Images/logo.webp";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -42,7 +42,7 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link className="navbar-brand">
               <div className="d-flex">
-                <img src={logo} height={"50px"} alt="" />
+                <img src="https://res.cloudinary.com/dpudz7cci/image/upload/v1721992967/logo_se8oz3.webp" height={"50px"} alt="" />
                 <pre>Shark Electronics</pre>
               </div>
             </Link>
