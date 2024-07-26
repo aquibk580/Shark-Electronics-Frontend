@@ -59,12 +59,12 @@ const AdminOrders = () => {
           <div className="col-md-3 p-4">
             <AdminMenu />
           </div>
-          <div className="col-md-9 orders">
+          <div className="col-md-9 d-flex flex-column orders">
             <h1 className="text-center">All Orders</h1>
-            {orders.map((o, i) => {
+            {orders?.map((o, i) => {
               return (
                 <div className="border shadow" key={i}>
-                  <table className="admin-table">
+                  <table className="table">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
@@ -78,7 +78,7 @@ const AdminOrders = () => {
                     <tbody>
                       <tr>
                         <td>{i + 1}</td>
-                        <td>
+                        <td className="p-0">
                           <Select
                             variant={false}
                             defaultValue={o?.status}

@@ -26,13 +26,5 @@
   .table{
     font-size: 14px !important;
   }
-  .admin-table{
-    font-size: 12px;
-  }
-  .admin-table th{
-     padding: 0 3px;
-  }
-  .admin-table td{
-    padding: 0 3px;
- }
+
 }

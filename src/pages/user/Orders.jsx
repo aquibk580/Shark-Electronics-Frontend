@@ -33,7 +33,7 @@ const Orders = () => {
           <div className="col-md-3">
             <UserMenu />
           </div>
-          <div className="col-md-9 d-flex flex-column align orders">
+          <div className="col-md-9 d-flex flex-column orders">
             <h2>All Orders</h2>
             {!Array.isArray(orders) || orders.length === 0 ? (
               <h3>No orders Found</h3>
@@ -41,7 +41,7 @@ const Orders = () => {
               orders?.map((o, i) => {
                 return (
                   <div className="border shadow" key={i}>
-                    <table className="table" id="table">
+                    <table className="table">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
