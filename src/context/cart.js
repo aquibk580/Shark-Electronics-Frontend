@@ -10,10 +10,10 @@ const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const handleCart = async (userId, productId) => {
     try {
-      const { data } = await axios.post(
-        `/api/v1/cart/add-cartitem`,
-        { userId, productId }
-      );
+      const { data } = await axios.post(`/api/v1/cart/add-cartitem`, {
+        userId,
+        productId,
+      });
 
       if (data?.success) {
         if (data?.cart) {
@@ -58,7 +58,6 @@ const CartProvider = ({ children }) => {
         if (data?.success) {
           setCart(data?.cart);
         } else {
-          console.log(data?.message);
         }
       } catch (error) {
         console.log(error);
