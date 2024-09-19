@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/auth";
 import { Outlet } from "react-router-dom";
-import api from "../../axios/api"
+import axios from "axios";
 import Spinner from "../Spinner";
 
 export default function AdminRoute() {
@@ -12,7 +12,7 @@ export default function AdminRoute() {
   useEffect(() => {
     const authCheck = async () => {
       try {
-        const res = await api.get(
+        const res = await axios.get(
           `/api/v1/auth/admin-auth`
         );
         if (res.data.ok) {

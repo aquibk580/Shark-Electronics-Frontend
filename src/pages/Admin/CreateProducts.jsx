@@ -3,7 +3,6 @@ import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "./../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
 import axios from "axios";
-import api from "../../axios/api";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
 const { Option } = Select;
@@ -50,7 +49,7 @@ const CreateProduct = () => {
       productData.append("photo", photo);
       productData.append("shipping", shipping);
       productData.append("category", category);
-      const { data } = await api.post(
+      const { data } = await axios.post(
         `/api/v1/product/create-product`,
         productData
       );

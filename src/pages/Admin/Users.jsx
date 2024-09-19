@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout/Layout";
 import AdminMenu from "../../components/Layout/AdminMenu";
-import api from "../../axios/api";
+import axios from "axios";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
 
   const getAllUsers = async () => {
     try {
-      const { data } = await api.get(
+      const { data } = await axios.get(
         `/api/v1/auth/admin-getallusers`
       );
       if (data?.success) {

@@ -4,7 +4,7 @@ import UserMenu from "../../components/Layout/UserMenu";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import api from "../../axios/api";
+import axios from "axios";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await api.put(
+      const { data } = await axios.put(
         `/api/v1/auth/profile`,
         {
           name,

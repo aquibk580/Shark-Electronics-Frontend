@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "./../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
-import api from "../../axios/api";
 import axios from "axios";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal } from "antd";
@@ -16,7 +15,7 @@ const CreateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await api.post(
+      const { data } = await axios.post(
         `/api/v1/category/create-category`,
         {
           name,
@@ -57,7 +56,7 @@ const CreateCategory = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await api.put(
+      const { data } = await axios.put(
         `/api/v1/category/update-category/${selected._id}`,
         { name: updatedName }
       );
@@ -77,7 +76,7 @@ const CreateCategory = () => {
   //delete category
   const handleDelete = async (pId) => {
     try {
-      const { data } = await api.delete(
+      const { data } = await axios.delete(
         `/api/v1/category/delete-category/${pId}`
       );
       if (data.success) {
