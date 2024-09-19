@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
-import axios from "axios";
+import api from "../../axios/api";
 import { Select } from "antd";
 import formatPrice from "../../components/formatPrice";
 const { Option } = Select;
@@ -24,7 +24,7 @@ const AdminOrders = () => {
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(
+      const { data } = await api.get(
         `/api/v1/order/all-orders`
       );
       setOrders(data);
@@ -42,7 +42,7 @@ const AdminOrders = () => {
 
   const handleChange = async (orderId, status) => {
     try {
-      const { data } = await axios.put(
+      const { data } = await api.put(
         `/api/v1/order/order-status/${orderId}`,
         { status }
       );

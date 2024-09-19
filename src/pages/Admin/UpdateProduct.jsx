@@ -3,6 +3,7 @@ import Layout from "./../../components/Layout/Layout";
 import AdminMenu from "./../../components/Layout/AdminMenu";
 import toast from "react-hot-toast";
 import axios from "axios";
+import api from "../../axios/api";
 import { Select } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 const { Option } = Select;
@@ -73,7 +74,7 @@ const UpdateProduct = () => {
       photo && productData.append("photo", photo);
       productData.append("category", category);
       productData.append("shipping" ,shipping);
-      const { data } = await axios.put(
+      const { data } = await api.put(
         `/api/v1/product/update-product/${id}`,
         productData
       );
@@ -94,7 +95,7 @@ const UpdateProduct = () => {
     try {
       let answer = window.prompt("Are You Sure want to delete this product ? ");
       if (!answer) return;
-      const { data } = await axios.delete(
+      const { data } = await api.delete(
         `/api/v1/product/delete-product/${id}`
       );
       toast.success("Product Deleted Succfully");

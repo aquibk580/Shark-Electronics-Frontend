@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout/Layout";
 import UserMenu from "../../components/Layout/UserMenu";
-import axios from "axios";
+import api from "../../axios/api";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
 import toast from "react-hot-toast";
@@ -12,7 +12,7 @@ const Orders = () => {
 
   const getOrders = async () => {
     try {
-      const { data } = await axios.get(`/api/v1/order`);
+      const { data } = await api.get(`/api/v1/order`);
       setOrders(data);
     } catch (error) {
       console.error("Error fetching orders:", error);

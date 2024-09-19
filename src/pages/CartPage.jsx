@@ -4,6 +4,7 @@ import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import api from "../axios/api";
 import axios from "axios";
 import DropIn from "braintree-web-drop-in-react";
 import "../styles/Cart.css";
@@ -44,7 +45,7 @@ const CartPage = () => {
   // Remove Item
   const removeCartItem = async (userId, productId) => {
     try {
-      const { data } = await axios.delete(
+      const { data } = await api.delete(
         `/api/v1/cart/delete-cartitem/${userId}/${productId}`
       );
       if (data?.success) {
@@ -57,7 +58,7 @@ const CartPage = () => {
           items: updatedCartItems,
           updatedAt: new Date().toISOString(),
         });
-
+axios
         toast.success(data?.message);
       } else {
         toast.error(data?.message);
@@ -70,7 +71,7 @@ const CartPage = () => {
 
   const removeAllCartItems = async () => {
     try {
-      const { data } = await axios.delete(
+      const { data } = await api.delete(
         `/api/v1/cart/remove-allitems/${auth?.user._id}`
       );
       if (data?.success) {
@@ -83,9 +84,7 @@ const CartPage = () => {
 
   const getToken = async () => {
     try {
-      const { data } = await axios.get(
-        `/api/v1/product/braintree/token`
-      );
+      const { data } = await axios.get(`/api/v1/product/braintree/token`);
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -103,13 +102,10 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      const { data } = await axios.post(
-        `/api/v1/product/braintree/payment`,
-        {
-          nonce,
-          cart,
-        }
-      );
+      const { data } = await api.post(`/api/v1/product/braintree/payment`, {
+        nonce,
+        cart,
+      });
       setLoading(false);
       toast.success(data.message);
       await removeAllCartItems();
@@ -127,7 +123,7 @@ const CartPage = () => {
         action === "increase"
           ? `/api/v1/cart/increase-quantity`
           : `/api/v1/cart/decrease-quantity`;
-      const response = await axios.post(url, { userId, productId });
+      const response = await api.post(url, { userId, productId });
       const { data, status } = response;
 
       if (status === 200 && data?.success) {

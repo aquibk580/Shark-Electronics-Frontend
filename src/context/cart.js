@@ -1,45 +1,36 @@
 import { useState, useContext, createContext, useEffect } from "react";
-import axios from "axios";
 import { useAuth } from "./auth";
 import toast from "react-hot-toast";
+import api from "../axios/api";
 
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [auth, setAuth] = useAuth();
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({ items: [], updatedAt: "" });
+
   const handleCart = async (userId, productId) => {
     try {
-      const { data } = await axios.post(`/api/v1/cart/add-cartitem`, {
+      const { data } = await api.post(`/api/v1/cart/add-cartitem`, {
         userId,
         productId,
       });
 
       if (data?.success) {
-        if (data?.cart) {
-          const updatedCart = data?.cart?.items.map((item) => {
-            if (item.productId._id === productId) {
-              return {
-                ...item,
-              };
-            }
-            return item;
-          });
-          setCart({
-            ...cart,
-            items: updatedCart,
-            updatedAt: new Date().toISOString(),
-          });
-          if (data?.success) toast.success(data?.message);
-        } else {
-          toast.success(data?.message);
-        }
+        const updatedCart = data?.cart?.items || [];
+        setCart({
+          items: updatedCart,
+          updatedAt: new Date().toISOString(),
+        });
+        toast.success(data?.message);
+      } else {
+        toast.success(data?.message);
       }
     } catch (error) {
       if (error.response) {
         if (error.response.status === 400) {
           const { message } = error.response.data;
-          toast.success(message);
+          toast.error(message);
         } else {
           toast.error("An error occurred");
         }
@@ -52,20 +43,21 @@ const CartProvider = ({ children }) => {
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const { data } = await axios.get(
+        const { data } = await api.get(
           `/api/v1/cart/get-cart/${auth?.user?._id}`
         );
         if (data?.success) {
-          setCart(data?.cart);
+          setCart(data?.cart || { items: [], updatedAt: "" });
         } else {
+          return;
         }
       } catch (error) {
         console.log(error);
-        toast.error(error);
+        toast.error("Failed to fetch cart");
       }
     };
     if (auth?.token) fetchCart();
-  }, [auth?.user?._id]);
+  }, [auth?.user?._id, auth?.token]);
 
   return (
     <CartContext.Provider value={{ cart, setCart, handleCart }}>
