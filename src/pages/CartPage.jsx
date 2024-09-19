@@ -58,7 +58,6 @@ const CartPage = () => {
           items: updatedCartItems,
           updatedAt: new Date().toISOString(),
         });
-axios
         toast.success(data?.message);
       } else {
         toast.error(data?.message);
