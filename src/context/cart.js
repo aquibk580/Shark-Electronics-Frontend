@@ -6,7 +6,7 @@ import api from "../axios/api";
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const [cart, setCart] = useState({ items: [], updatedAt: "" });
 
   const handleCart = async (userId, productId) => {
@@ -24,15 +24,16 @@ const CartProvider = ({ children }) => {
         });
         toast.success(data?.message);
       } else {
-        toast.success(data?.message);
+        toast.error(data?.message || "Unexpected response from server");
       }
     } catch (error) {
+      console.error("Error adding cart item:", error);
       if (error.response) {
         if (error.response.status === 400) {
           const { message } = error.response.data;
           toast.error(message);
         } else {
-          toast.error("An error occurred");
+          toast.error(`An error occurred: ${error.response.statusText}`);
         }
       } else {
         toast.error("An error occurred");
@@ -49,15 +50,18 @@ const CartProvider = ({ children }) => {
         if (data?.success) {
           setCart(data?.cart || { items: [], updatedAt: "" });
         } else {
-          return;
+          toast.error(
+            "Failed to fetch cart: " + (data?.message || "Unknown error")
+          );
         }
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching cart:", error);
         toast.error("Failed to fetch cart");
       }
     };
-    if (auth?.token) fetchCart();
-  }, [auth?.user?._id, auth?.token]);
+
+    if (auth?.user?._id) fetchCart();
+  }, [auth?.user?._id]);
 
   return (
     <CartContext.Provider value={{ cart, setCart, handleCart }}>
